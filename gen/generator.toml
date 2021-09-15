@@ -1,0 +1,9 @@
+[general]
+library_name = "libcxxrtl"
+output_file_path = "../src/CxxrtlCosim.jl"
+prologue_file_path = "./prologue.jl"
+epilogue_file_path = "./epilogue.jl"
+module_name = "CxxrtlCosim"
+export_symbol_prefixes = ["cxxrtl_"]
+use_julia_native_enum_type = true
+printer_blacklist = ["cxxrtl_get"]
