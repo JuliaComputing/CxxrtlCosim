@@ -1,5 +1,5 @@
 # CxxrtlCosim
-Cosimulation of ModelingToolkit and Cxxrtl
+Cosimulation of ModelingToolkit.jl and cxxrtl
 
 This project is a Julia interface to Yosys's cxxrtl C API, which allows driving a HDL model from Julia.
 It supports any HDL that can be parsed by Yosys, including VHDL, Verilog, nMigen and many more.
