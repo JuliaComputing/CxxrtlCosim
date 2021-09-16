@@ -103,9 +103,14 @@ function cxxrtl_get(handle, name)
 	return C_NULL
 end
 
+function cxxrtl_design_create(lib)
+    global libcxxrtl = lib
+    ccall((:cxxrtl_design_create, libcxxrtl), cxxrtl_toplevel, ())
+end
+
 function synth(output, files...)
     cmd = Yosys_jll.yosys()
-    push!(cmd.exec, "-p", "write_cxxrtl $(output)", files...)
+    push!(cmd.exec, "-q", "-p", "write_cxxrtl $(output)", files...)
     run(cmd)
 end
 
@@ -116,10 +121,7 @@ function compile(output, mod)
     run(cmd)
 end
 
-function load(lib)
-    global libcxxrtl = lib
-    ccall((:cxxrtl_design_create, libcxxrtl), cxxrtl_toplevel, ())
-end
+include("cosim.jl")
 # end
 
 # exports

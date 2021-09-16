@@ -2,9 +2,13 @@ using CxxrtlCosim
 
 cd(@__DIR__)
 
-CxxrtlCosim.synth("blinky.cpp", "blinky.v")
-CxxrtlCosim.compile("blinky.so", "blinky.cpp")
-top = CxxrtlCosim.load("./blinky.so")
+if !isfile("blinky.so")
+    println("compiling blinky.v")
+    CxxrtlCosim.synth("blinky.cpp", "blinky.v")
+    CxxrtlCosim.compile("blinky.so", "blinky.cpp")
+end
+
+top = CxxrtlCosim.cxxrtl_design_create("./blinky.so")
 
 blink = CxxrtlCosim.cxxrtl_create(top)
 
